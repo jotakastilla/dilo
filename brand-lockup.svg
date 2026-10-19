@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 96" role="img" aria-label="Dilo con vinilo — regalos que se escuchan">
+  <rect width="370" height="96" fill="#F4ECE4"/>
+  <g transform="translate(3 3)">
+    <g fill="none" stroke="#111111" stroke-width="3">
+      <circle cx="42" cy="42" r="39"/>
+      <circle cx="42" cy="42" r="32"/>
+      <circle cx="42" cy="42" r="25"/>
+      <circle cx="42" cy="42" r="18"/>
+    </g>
+    <circle cx="42" cy="42" r="16" fill="#C8683A"/>
+    <circle cx="42" cy="42" r="4" fill="#F4ECE4"/>
+  </g>
+  <path d="M95 4V74" stroke="#111111" stroke-width="2"/>
+  <text x="113" y="39" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800" letter-spacing="-1.7">DILO</text>
+  <text x="113" y="68" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="800" letter-spacing="-1.4">CON VINILO</text>
+  <text x="113" y="89" fill="#C8683A" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" letter-spacing="3.1">REGALOS QUE SE ESCUCHAN</text>
+</svg>

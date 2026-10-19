@@ -1,0 +1,2 @@
+.finder-result button { display: block; margin-top: 10px; border: 0; padding: 0; background: none; color: #a13a29; cursor: pointer; font-family: Arial, sans-serif; font-size: .59rem; font-weight: bold; text-transform: uppercase; letter-spacing: .08em; }
+.finder-result button:hover { text-decoration: underline; }

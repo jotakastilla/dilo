@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Permitimos la indexación de esta web en ChatGPT Search.
+User-agent: OAI-SearchBot
+Allow: /
