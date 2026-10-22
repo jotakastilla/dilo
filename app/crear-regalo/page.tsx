@@ -387,6 +387,42 @@ function Proposal({
   total: number;
   onEdit: () => void;
 }) {
+  const [checkoutState, setCheckoutState] = useState<
+    'idle' | 'loading' | 'error'
+  >('idle');
+  const [checkoutError, setCheckoutError] = useState('');
+
+  const startCheckout = async () => {
+    setCheckoutState('loading');
+    setCheckoutError('');
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          person: draft.person,
+          occasion: draft.occasion,
+          pack: draft.pack,
+          boxSize: draft.boxSize,
+          dedication: draft.dedication,
+          extras: draft.extras,
+        }),
+      });
+      const result = (await response.json()) as { url?: string; error?: string };
+      if (!response.ok || !result.url) {
+        throw new Error(result.error ?? 'No hemos podido iniciar el pago.');
+      }
+      window.location.assign(result.url);
+    } catch (error) {
+      setCheckoutState('error');
+      setCheckoutError(
+        error instanceof Error
+          ? error.message
+          : 'No hemos podido iniciar el pago. Inténtalo de nuevo.',
+      );
+    }
+  };
+
   return (
     <main className="configurator">
       <Header />
@@ -448,21 +484,32 @@ function Proposal({
             vida. Los títulos cambian según el stock real.
           </p>
           <p className="proposal-note">
-            <strong>{formatEuro(total)}</strong> · Total provisional. El pago se
-            activará al configurar la entrega.
+            <strong>{formatEuro(total)}</strong> · Envío incluido en España.
           </p>
           <div className="proposal-actions">
             <button className="back" onClick={onEdit}>
               ← Editar mi caja
             </button>
-            <button className="button checkout-button" type="button" disabled>
-              Finalizar pedido <span>→</span>
+            <button
+              className="button checkout-button"
+              type="button"
+              onClick={startCheckout}
+              disabled={checkoutState === 'loading'}
+            >
+              {checkoutState === 'loading' ? 'Abriendo pago seguro…' : 'Finalizar pedido'}{' '}
+              <span>→</span>
             </button>
           </div>
           <small className="checkout-status">
-            Estamos terminando de configurar envío y pago seguro con Stripe.{' '}
+            Hecho bajo demanda · plazo estimado de 10–12 días · envío incluido
+            en el precio. Pago seguro con Stripe.{' '}
             <a href="/condiciones">Ver información de compra</a>
           </small>
+          {checkoutState === 'error' && (
+            <p className="checkout-status" role="alert">
+              {checkoutError}
+            </p>
+          )}
         </div>
       </section>
     </main>

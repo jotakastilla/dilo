@@ -17,7 +17,7 @@ export const siteConfig = {
     siteUrl:
       process.env.NEXT_PUBLIC_SITE_URL ??
       'https://dilo-vinyl-stories.vercel.app',
-    salesEnabled: false,
+    salesEnabled: true,
     inventoryMode: 'manual-review' as const,
     /** Proposals are assembled from owned stock only; sourcing is always a human decision. */
     externalSourcingEnabled: false,

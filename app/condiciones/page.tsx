@@ -30,11 +30,11 @@ export default function PurchaseInformationPage() {
         </p>
       </section>
       <section className="info-notice">
-        <b>Estado actual</b>
+        <b>Producción bajo demanda</b>
         <p>
-          Los pagos todavía no están activados. Antes de abrir la venta, DILO
-          publicará los datos completos de titularidad, contacto, entrega y
-          devoluciones.
+          Cada caja se prepara bajo demanda después de confirmar el pago. El
+          plazo estimado es de 10–12 días y el envío dentro de España está
+          incluido en el precio mostrado.
         </p>
       </section>
       <section className="info-grid">
@@ -42,37 +42,43 @@ export default function PurchaseInformationPage() {
           <p className="dilo-kicker">Identificación</p>
           <h2>Quién vende.</h2>
           <p>
-            DILO es el nombre comercial de esta tienda de regalos musicales. Los
-            datos de titularidad legal, identificación fiscal, domicilio y canal
-            de contacto se mostrarán antes de habilitar cualquier pago.
+            DILO es el nombre comercial de esta tienda de regalos musicales.
+            Para cualquier consulta sobre un pedido puedes escribir a{' '}
+            <a href={`mailto:${siteConfig.brand.email}`}>
+              {siteConfig.brand.email}
+            </a>
+            .
           </p>
         </article>
         <article>
           <p className="dilo-kicker">Entrega</p>
           <h2>Cómo llega.</h2>
           <p>
-            Los envíos a Península se realizan con Correos. El plazo estimado de
-            entrega es de 3 a 5 días laborables. El coste de envío y la
-            información para otras zonas se mostrarán antes de activar el pago.
+            Prepararemos cada caja tras la confirmación del pedido. El plazo
+            estimado de preparación y entrega es de 10–12 días. El envío a
+            España está incluido en el precio final.
           </p>
         </article>
         <article>
           <p className="dilo-kicker">Devoluciones</p>
           <h2>Si algo no encaja.</h2>
           <p>
-            Las condiciones, plazo, procedimiento y costes de devolución se
-            publicarán antes de activar la venta. Podrás consultarlas desde el
-            checkout antes de completar el pago.
+            Si necesitas cancelar un pedido o solicitar una devolución, escribe
+            a{' '}
+            <a href={`mailto:${siteConfig.brand.email}`}>
+              {siteConfig.brand.email}
+            </a>{' '}
+            indicando el número de pedido. Te ayudaremos a gestionar la
+            cancelación o el reembolso.
           </p>
         </article>
         <article>
           <p className="dilo-kicker">Privacidad</p>
           <h2>Tus datos.</h2>
           <p>
-            Usaremos los datos necesarios para preparar y entregar un pedido. La
-            política de privacidad completa, responsable del tratamiento y
-            derechos de las personas usuarias se incorporarán antes de recoger
-            datos de pago o envío.
+            Usaremos los datos necesarios para preparar y entregar tu pedido.
+            El pago se procesa de forma segura a través de Stripe; DILO no
+            recibe los datos de tu tarjeta.
           </p>
         </article>
       </section>
