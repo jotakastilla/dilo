@@ -2,6 +2,36 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
   "cleanUrls": true,
+  "routes": [
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "header",
+          "key": "rsc",
+          "value": "1"
+        }
+      ],
+      "dest": "/index.rsc",
+      "headers": {
+        "Content-Type": "text/x-component"
+      }
+    },
+    {
+      "src": "^/(.*)$",
+      "has": [
+        {
+          "type": "header",
+          "key": "rsc",
+          "value": "1"
+        }
+      ],
+      "dest": "/$1.rsc",
+      "headers": {
+        "Content-Type": "text/x-component"
+      }
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
