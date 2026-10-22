@@ -1,34 +1,305 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/lib/site-config';
 
-const occasions = [
-  ['Para Navidad', '/regalos-originales-navidad'], ['Para una pareja', '/regalos-para-parejas'], ['Para tu mejor amigo', '/para-mi-mejor-amigo'], ['Para cumpleaños', '/regalos-cumpleanos'], ['Para mamá', '/regalos-dia-de-la-madre'], ['Para papá', '/regalos-dia-del-padre'],
-];
-const messages = [
-  ['Te quiero', '/quiero-decirte-te-quiero'], ['Te echo de menos', '/te-echo-de-menos'], ['Gracias por todo', '/gracias-por-todo'], ['Perdóname', '/perdoname'], ['Nuestra historia', '/nuestra-historia'], ['Eres mi persona', '/regalos-para-amigos'],
-];
+const collections = [
+  {
+    pack: siteConfig.packs[0],
+    number: '01',
+    image: 'eighties',
+    description:
+      'Cinco vinilos para regresar a una década que nunca dejó de sonar.',
+  },
+  {
+    pack: siteConfig.packs[1],
+    number: '02',
+    image: 'spain',
+    description: 'Canciones que ya conocías antes de saber que eran recuerdos.',
+  },
+  {
+    pack: siteConfig.packs[2],
+    number: '03',
+    image: 'love',
+    description:
+      'Canciones para decir algo cuando las palabras se quedan cortas.',
+  },
+] as const;
+
+const included = [
+  [
+    'Vinilos originales',
+    'Cinco pequeñas joyas con historia, elegidas dentro del estilo que marques.',
+  ],
+  [
+    'Carta de bienvenida',
+    'Una nota para empezar a abrir la caja como se abre una historia.',
+  ],
+  [
+    'Fichas de escucha',
+    'Contexto, canciones y una pista para saber por dónde empezar.',
+  ],
+  [
+    'Dos posavasos sorpresa',
+    'Un detalle DILO para acompañar la primera escucha.',
+  ],
+  [
+    'Pegatinas DILO',
+    'Para que la caja siga contando algo incluso después de abrirla.',
+  ],
+  [
+    'Dedicatoria impresa',
+    'La añadimos cuando quieras dejarle una frase solo vuestra.',
+  ],
+] as const;
+
+const extras = [
+  ['Taza DILO', '/images/dilo-extra-taza.png'],
+  ['Abridor DILO', '/images/dilo-extra-abridor.png'],
+  ['Tote bag', '/images/dilo-extra-tote.png'],
+  ['Pack de posavasos', '/images/dilo-extra-posavasos.png'],
+] as const;
 
 export default function Home() {
-  return <main className="home-v2">
-    <header className="site-header"><Link href="/" className="logo" aria-label={`${siteConfig.brand.name}, inicio`}><span className="logo-mark">◎</span><span>{siteConfig.brand.name}</span></Link><nav aria-label="Principal"><a href="#como-funciona">Cómo funciona</a><a href="#packs">Los packs</a><a href="#inspiracion">Ideas</a></nav><Link className="header-link" href="/crear-regalo">Crear mi regalo <span>↗</span></Link></header>
+  return (
+    <main className="dilo-editorial">
+      <header className="dilo-nav">
+        <a className="dilo-wordmark" href="/" aria-label="DILO, inicio">
+          DIL<span>◉</span>
+        </a>
+        <nav aria-label="Principal">
+          <a href="#cajas">Cajas</a>
+          <a href="#estilos">Estilos</a>
+          <a href="#regalos">Regalos</a>
+          <a href="#como-funciona">Cómo funciona</a>
+        </nav>
+        <a className="dilo-cart" href="/crear-regalo">
+          Crear mi caja <span>→</span>
+        </a>
+      </header>
+      <a className="christmas-ribbon" href="/regalos-navidad">
+        <span>✦</span> Estas Navidades, DILO <b>Descubrir regalos →</b>
+      </a>
 
-    <section className="v2-hero"><div className="v2-copy"><p className="eyebrow"><span /> regalos que se escuchan</p><h1>La caja para<br /><em>decirlo todo.</em></h1><p>Dentro van tu mensaje, vuestra música y los recuerdos que no caben en una tarjeta. Nosotros los convertimos en una selección de vinilos para regalar.</p><div className="v2-actions"><Link className="button" href="/crear-regalo">Crear mi regalo <span>→</span></Link><a className="text-link" href="#como-funciona">Descubre cómo funciona <span>↓</span></a></div><small>Vinilos originales de segunda mano · Selección revisada a mano</small></div><figure className="v2-hero-image"><Image src="/images/dilo-hero-comic-v1.png" alt="Ilustración de una persona abriendo una caja regalo de vinilos DILO" width={1680} height={960} priority /><figcaption>una historia preparada para sonar</figcaption></figure></section>
+      <section className="dilo-hero-2026">
+        <Image
+          className="dilo-hero-photo"
+          src="/images/dilo-hero-box-retro.png"
+          alt="Caja DILO abierta con vinilos, fichas de escucha, carta, posavasos y pegatinas"
+          width={1670}
+          height={940}
+          priority
+        />
+        <div className="dilo-hero-overlay" />
+        <div className="dilo-hero-copy">
+          <p className="dilo-kicker">DILO · VINILOS QUE CUENTAN HISTORIAS</p>
+          <h1>
+            No tengas
+            <br />
+            miedo y <i>DILO.</i>
+          </h1>
+          <p>
+            Regala música de verdad. Vinilos originales, historias y recuerdos
+            dentro de una caja que merece la pena abrir.
+          </p>
+          <div className="dilo-hero-actions">
+            <a className="dilo-button dilo-button--red" href="/crear-regalo">
+              Crea tu caja DILO <span>→</span>
+            </a>
+            <a className="dilo-text-link" href="#cajas">
+              Descubre qué hay dentro <span>↓</span>
+            </a>
+          </div>
+        </div>
+        <p className="dilo-hero-note">
+          Selección sorpresa con criterio · Discos originales con historia
+        </p>
+      </section>
+      <section
+        className="dilo-benefits"
+        aria-label="Lo esencial de una caja DILO"
+      >
+        <p>Vinilos originales seleccionados</p>
+        <p>Una experiencia preparada para regalar</p>
+        <p>Fichas musicales y detalles DILO</p>
+      </section>
 
-    <section id="como-funciona" className="v2-steps"><div><p className="eyebrow"><span /> así de sencillo</p><h2>Una historia.<br /><em>Una caja.</em></h2></div><ol><li><span>01</span><h3>Tú nos das las pistas.</h3><p>La persona, el mensaje, los recuerdos y la música que os representa.</p></li><li><span>02</span><h3>Nosotros buscamos el hilo.</h3><p>Preparamos una propuesta con discos originales disponibles y con sentido.</p></li><li><span>03</span><h3>Ella o él abre la historia.</h3><p>Una caja cuidada, una dedicatoria y el porqué de cada selección.</p></li></ol></section>
+      <section className="dilo-steps" id="como-funciona">
+        <div className="dilo-section-title">
+          <p className="dilo-kicker">Así de fácil</p>
+          <h2>
+            Cómo funciona
+            <br />
+            <i>tu regalo.</i>
+          </h2>
+        </div>
+        <ol>
+          {[
+            [
+              '01',
+              'Elige el estilo.',
+              'Una época, un sonido o una emoción para empezar la historia.',
+            ],
+            [
+              '02',
+              'Seleccionamos los vinilos.',
+              'Combinamos clásicos que reconoce con joyas por redescubrir.',
+            ],
+            [
+              '03',
+              'Recibe la caja.',
+              'Kraft, vinilos, fichas y detalles preparados para abrir despacio.',
+            ],
+          ].map(([number, title, text]) => (
+            <li key={number}>
+              <b>{number}</b>
+              <span className="dilo-mini-record" aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ol>
+        <a className="dilo-button" href="/crear-regalo">
+          Empezar mi caja <span>→</span>
+        </a>
+      </section>
 
-    <section className="v2-unbox"><div className="unbox-collection" aria-hidden="true" /><div className="unbox-content"><p className="eyebrow"><span /> dentro de la caja</p><h2>No llega una caja.<br /><em>Llega un momento.</em></h2><p>Partimos de una colección amplia de vinilos originales para crear una caja hecha a vuestra medida: por una canción, una época, una persona o todo lo que queréis contar.</p><ul><li>Discos revisados uno a uno</li><li>Relato editorial de la selección</li><li>Presentación pensada para regalar</li></ul></div></section>
+      <section className="dilo-unboxing" id="cajas">
+        <div className="dilo-unboxing-photo">
+          <Image
+            src="/images/dilo-unboxing-reference.png"
+            alt="Los detalles que incluye una caja DILO"
+            width={1536}
+            height={1024}
+          />
+          <span>Una caja para abrir, mirar y escuchar.</span>
+        </div>
+        <div className="dilo-unboxing-copy">
+          <p className="dilo-kicker">Mucho más que cinco discos</p>
+          <h2>
+            Lo que llega
+            <br />
+            <i>a casa.</i>
+          </h2>
+          <p className="dilo-lead">
+            No es una caja con discos al azar. Es una selección musical
+            acompañada de los pequeños detalles que hacen especial el regalo.
+          </p>
+          <div className="dilo-included-grid">
+            {included.map(([title, text], index) => (
+              <article key={title}>
+                <b>{String(index + 1).padStart(2, '0')}</b>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    <section id="packs" className="v2-packs"><div className="v2-heading"><p className="eyebrow"><span /> elige la escala</p><h2>Tu historia tiene<br /><em>el tamaño que quieras.</em></h2></div><div className="pack-grid">{siteConfig.packs.map((pack, index) => <article key={pack.id} className={index === 1 ? 'featured' : ''}><p>0{index + 1} · {pack.vinylCount} VINILOS</p><h3>{pack.name}</h3><span>{pack.presentation}</span><strong>{(pack.priceCents / 100).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</strong><Link href="/crear-regalo">Empezar esta caja <i>→</i></Link></article>)}</div><p className="v2-disclaimer">Precios de lanzamiento provisionales. La propuesta se revisa antes de confirmar cualquier pedido.</p></section>
+      <section className="dilo-collections" id="estilos">
+        <div className="dilo-section-title">
+          <p className="dilo-kicker">Elige el sonido</p>
+          <h2>
+            Una época.
+            <br />
+            <i>Una caja.</i>
+          </h2>
+          <p>
+            Las colecciones empiezan por un estilo. La selección final depende
+            siempre de las joyas que tengamos disponibles.
+          </p>
+        </div>
+        <div className="dilo-collection-grid">
+          {collections.map(({ pack, number, image, description }) => (
+            <article
+              className={`dilo-collection-card dilo-collection-card--${image}`}
+              key={pack.id}
+            >
+              <Image
+                src={pack.montage}
+                alt={`Montaje de vinilos para ${pack.name}`}
+                width={720}
+                height={540}
+              />
+              <div>
+                <p>DILO {number}</p>
+                <h3>{pack.name}</h3>
+                <span>{description}</span>
+                <b>
+                  Desde{' '}
+                  {(pack.priceCents / 100).toLocaleString('es-ES', {
+                    style: 'currency',
+                    currency: 'EUR',
+                  })}
+                </b>
+                <a href={`/crear-regalo?coleccion=${pack.id}`}>
+                  Elegir esta colección <i>→</i>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="dilo-stock-note">
+          Los artistas y álbumes que mostramos son referencias del estilo, no
+          títulos garantizados. La selección final varía según el stock real.
+        </p>
+      </section>
 
-    <section id="inspiracion" className="v2-links"><div><p className="eyebrow"><span /> para cada ocasión</p><h2>Empieza por<br /><em>el momento.</em></h2></div><div className="link-cloud">{occasions.map(([label, href]) => <Link key={href} href={href}>{label}<span>↗</span></Link>)}</div></section>
-    <section className="v2-links v2-links-dark"><div><p className="eyebrow"><span /> o por lo que sientes</p><h2>Hay cosas que no<br /><em>se dicen igual.</em></h2></div><div className="link-cloud">{messages.map(([label, href]) => <Link key={href} href={href}>{label}<span>↗</span></Link>)}</div></section>
+      <section className="dilo-extras" id="regalos">
+        <div className="dilo-section-title">
+          <p className="dilo-kicker">Por si quieres decir algo más</p>
+          <h2>
+            Detalles que
+            <br />
+            <i>enamoran.</i>
+          </h2>
+          <p>
+            Estos extras son opcionales. La caja ya llega completa; aquí puedes
+            añadir un gesto más a tu regalo.
+          </p>
+        </div>
+        <div className="dilo-extra-list">
+          {extras.map(([extra, image], index) => (
+            <article key={extra}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div className="dilo-extra-image">
+                <Image src={image} alt={extra} width={1200} height={1200} />
+              </div>
+              <h3>{extra}</h3>
+              <p>Extra opcional</p>
+            </article>
+          ))}
+        </div>
+        <p className="dilo-extras-footnote">
+          Disponibles durante la configuración de la caja.
+        </p>
+      </section>
 
-    <section className="v2-example"><div className="example-label"><span>UN EJEMPLO</span><b>para<br />Marina</b></div><div className="example-copy"><p className="eyebrow"><span /> una selección posible</p><h2>“Le encanta bailar en la cocina y siempre pone música cuando todo se tuerce.”</h2><p>Con unas pocas pistas, una colección puede unir el soul de los setenta, una portada luminosa y el disco que os recuerda al verano en que os conocisteis. Es una propuesta ilustrativa: cada pedido se construye con inventario real.</p><Link className="text-link" href="/crear-regalo">Contar vuestra historia <span>→</span></Link></div></section>
+      <section className="dilo-manifesto">
+        <p className="dilo-kicker">DILO · VINILOS QUE CUENTAN HISTORIAS</p>
+        <h2>
+          No es nostalgia.
+          <br />
+          <i>Es buena música.</i>
+        </h2>
+        <p>
+          Hay cosas que solo se dicen con música. Por eso elegimos discos que ya
+          han vivido algo y están listos para volver a sonar en otra casa.
+        </p>
+        <a className="dilo-button dilo-button--cream" href="/crear-regalo">
+          Si no sabes qué regalar, DILO <span>→</span>
+        </a>
+      </section>
 
-    <section className="v2-faq"><p className="eyebrow"><span /> dudas normales</p><h2>Preguntas antes<br /><em>de regalar.</em></h2><div><details><summary>¿Los vinilos son nuevos?</summary><p>No. Son discos originales de segunda mano. Su estado y disponibilidad se revisan antes de aprobar la selección.</p></details><details><summary>¿Voy a saber qué discos incluye?</summary><p>La propuesta se prepara para revisión antes de confirmar el pedido. Nunca sustituimos una selección por títulos inventados.</p></details><details><summary>¿Fabricáis vinilos personalizados?</summary><p>No. La personalización está en la selección, el relato y la presentación; los discos son ediciones físicas existentes.</p></details><details><summary>¿Puedo pedir algo muy concreto?</summary><p>Sí. Cuantas más pistas compartas, mejor podremos comprobar si existe una selección adecuada en el inventario.</p></details></div></section>
-
-    <section className="v2-final"><p className="eyebrow"><span /> empieza cuando quieras</p><h2>Hay algo que quieres<br /><em>decirle.</em></h2><p>Nosotros te ayudamos a encontrar la manera de ponerlo a sonar.</p><Link className="button button-light" href="/crear-regalo">Crear mi regalo <span>→</span></Link></section>
-    <footer><Link className="logo" href="/"><span className="logo-mark">◎</span><span>{siteConfig.brand.name}</span></Link><p>Discos con historia. Regalos con intención.</p><a href={`mailto:${siteConfig.brand.email}`}>{siteConfig.brand.email}</a></footer>
-  </main>;
+      <footer className="dilo-footer">
+        <a className="dilo-wordmark" href="/">
+          DIL<span>◉</span>
+        </a>
+        <p>Vinilos que cuentan historias.</p>
+        <a href="/condiciones">Información de compra</a>
+        <a href={`mailto:${siteConfig.brand.email}`}>
+          {siteConfig.brand.email}
+        </a>
+      </footer>
+    </main>
+  );
 }
